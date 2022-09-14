@@ -6,9 +6,11 @@ const apiClient = axios.create({
   timeout: 1000,
 });
 
+// axios middleware adds token to every request in authorization
 apiClient.interceptors.request.use(
   (config) => {
     const userDetails = localStorage.getItem("user");
+    console.log(userDetails);
     if (userDetails) {
       const token = JSON.parse(userDetails).token;
       config.headers.Authorization = `Bearer ${token}`;
@@ -18,6 +20,8 @@ apiClient.interceptors.request.use(
   (err) => Promise.reject(err)
 );
 
+// Api calls
+// login user
 export const login = async (data) => {
   try {
     return await apiClient.post("/auth/login", data);
@@ -27,6 +31,7 @@ export const login = async (data) => {
   }
 };
 
+// register user
 export const register = async (data) => {
   try {
     return await apiClient.post("/auth/register", data);
@@ -34,7 +39,10 @@ export const register = async (data) => {
     return { error: true, exception };
   }
 };
+
 // secure routes
+
+// send friend invite
 export const sendFriendInvitation = async (data) => {
   try {
     return await apiClient.post("/friend-invitation/invite", data);
@@ -70,6 +78,7 @@ export const rejectFriendInvitation = async (data) => {
   }
 };
 
+// if jwt token error then we logout
 const checkResponseCode = (exception) => {
   const responseCode = exception?.response?.status;
   if (responseCode) {

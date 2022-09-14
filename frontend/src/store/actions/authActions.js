@@ -11,6 +11,7 @@ export const setUserDetails = (userDetails) => {
   };
 };
 
+// login action
 export const login = async (dispatch, userDetails, navigate) => {
   const response = await api.login(userDetails);
   console.log(response);
@@ -25,6 +26,7 @@ export const login = async (dispatch, userDetails, navigate) => {
   }
 };
 
+// register action
 export const register = async (dispatch, userDetails, navigate) => {
   const response = await api.register(userDetails);
   if (response.error) {

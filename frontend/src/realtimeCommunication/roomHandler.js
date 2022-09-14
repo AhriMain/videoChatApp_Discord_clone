@@ -10,11 +10,13 @@ import * as socketConnection from "./socketConnection";
 import * as webRTCHandler from "./webRTCHandler";
 import { setScreenSharingStream } from "../store/actions/roomActions";
 
+// when a user creates new room
 export const createNewRoom = () => {
   const successCallbackFunc = () => {
     store.dispatch(setOpenRoom(true, true));
     socketConnection.createNewRoom();
   };
+  // if no webcam user can stream with only audio
   const audioOnly = store.getState().room.audioOnly;
   // if we do not get any error in retreving localStream then we will run callbackfunction
   webRTCHandler.getLocalStreamPreview(audioOnly, successCallbackFunc);
@@ -25,6 +27,7 @@ export const newRoomCreated = (data) => {
   store.dispatch(setRoomDetails(roomDetails));
 };
 
+// all active rooms
 export const updateActiveRooms = (data) => {
   const { activeRooms } = data;
   const friends = store.getState().friends.friends;

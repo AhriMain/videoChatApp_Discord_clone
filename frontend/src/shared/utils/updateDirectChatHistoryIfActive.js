@@ -18,6 +18,7 @@ export const updateDirectChatHistoryIfActive = (data) => {
   }
 };
 
+// if both participants are verified then dispatch action to set messages between them to store
 const updateChatHistoryIfSameConversationActive = ({
   participants,
   usersInCoversation,

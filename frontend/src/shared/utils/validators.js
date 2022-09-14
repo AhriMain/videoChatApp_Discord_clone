@@ -2,6 +2,8 @@ export const validateLoginForm = ({ mail, password }) => {
   return validatePassword(password) && validateMail(mail);
 };
 
+//form validators
+
 const validatePassword = (password) => {
   return password.length > 6 && password.length < 12;
 };

@@ -43,6 +43,7 @@ export const rejectFriendInvitation = async (dispatch, data) => {
   }
 };
 
+// get pending Friends Invitation from server and set to redux store
 export const setPendingFriendsInvitations = (pendingFriendsInvitations) => {
   return {
     type: friendsActions.SET_PENDING_FRIENDS_INVITATION,
@@ -50,6 +51,7 @@ export const setPendingFriendsInvitations = (pendingFriendsInvitations) => {
   };
 };
 
+// friends list from server and set to redux store
 export const setFriends = (friends) => {
   return {
     type: friendsActions.SET_FRIENDS,
@@ -57,6 +59,7 @@ export const setFriends = (friends) => {
   };
 };
 
+// all online users from server and set to redux store
 export const setOnlineUsers = (onlineUsers) => {
   return {
     type: friendsActions.SET_ONLINE_USERS,

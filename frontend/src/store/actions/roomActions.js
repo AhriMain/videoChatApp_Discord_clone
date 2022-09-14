@@ -20,6 +20,7 @@ export const setOpenRoom = (
   };
 };
 
+// creator room details set it to store
 export const setRoomDetails = (roomDetails) => {
   return {
     type: roomActions.SET_ROOM_DETAILS,
@@ -27,6 +28,7 @@ export const setRoomDetails = (roomDetails) => {
   };
 };
 
+//active rooms of user and his friendd set to redux store
 export const setActiveRooms = (activeRooms) => {
   return {
     type: roomActions.SET_ACTIVE_ROOMS,
@@ -34,6 +36,7 @@ export const setActiveRooms = (activeRooms) => {
   };
 };
 
+// local video and audio to redux store
 export const setLocalStream = (localStream) => {
   return {
     type: roomActions.SET_LOCAL_STREAM,
@@ -41,10 +44,12 @@ export const setLocalStream = (localStream) => {
   };
 };
 
+// boolean value set to store
 export const setAudiOnly = (audioOnly) => {
   return { type: roomActions.SET_AUDIO_ONLY, audioOnly };
 };
 
+// other peers stream set to store
 export const setRemoteStreams = (remoteStreams) => {
   return {
     type: roomActions.SET_REMOTE_STREAMS,
@@ -52,6 +57,7 @@ export const setRemoteStreams = (remoteStreams) => {
   };
 };
 
+// set screen sharing video to our store
 export const setScreenSharingStream = (stream) => {
   return {
     type: roomActions.SET_SCREEN_SHARE_STREAM,
