@@ -15,6 +15,7 @@ const VideoEl = styled("video")({
 
 const Video = ({ stream, isLocalStream }) => {
   const videoRef = useRef();
+  console.log(isLocalStream);
   useEffect(() => {
     const video = videoRef.current;
     video.srcObject = stream;
