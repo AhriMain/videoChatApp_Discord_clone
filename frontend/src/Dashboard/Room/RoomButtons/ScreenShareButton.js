@@ -9,7 +9,6 @@ import store from "../../../store/store";
 
 const ScreenShareButton = ({ dispatch, localStream }) => {
   const room = useSelector((state) => state.room);
-  console.log(room);
   const { isScreenSharingActive, screenSharingStream } = room;
   const constraints = { audio: false, video: true };
   const handleScreenShareToggle = async () => {
@@ -18,12 +17,12 @@ const ScreenShareButton = ({ dispatch, localStream }) => {
       try {
         stream = await navigator.mediaDevices.getDisplayMedia(constraints);
       } catch (error) {
-        console.log("error");
+        console.log(
+          "error occured when trying to get an access to screen share stream"
+        );
       }
       if (stream) {
-        console.log("stream",stream.getTracks());
         dispatch(setScreenSharingStream(stream));
-        console.log(store.getState().room.screenSharingStream.getTracks());
         webRTCHandler.switchOutgoingTracks(stream);
       }
     } else {
