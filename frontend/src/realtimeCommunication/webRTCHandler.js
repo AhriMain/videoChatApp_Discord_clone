@@ -2,6 +2,7 @@ import store from "../store/store";
 import { setLocalStream, setRemoteStreams } from "../store/actions/roomActions";
 import Peer from "simple-peer";
 import * as socketConnection from "./socketConnection";
+import { openAlertMessage } from "../store/actions/alertActions";
 const onlyAudioConstraints = {
   audio: true,
   video: false,
@@ -38,7 +39,8 @@ export const getLocalStreamPreview = (onlyAudio = false, callbackFunc) => {
       callbackFunc();
     })
     .catch((err) => {
-      console.log(err);
+      err.msg = "cannot access localstream";
+      openAlertMessage(store.dispatch, err.msg);
       console.error("cannot access localstream");
     });
 };

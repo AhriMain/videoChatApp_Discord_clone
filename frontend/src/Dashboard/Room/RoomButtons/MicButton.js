@@ -7,7 +7,6 @@ const MicButton = ({ localStream }) => {
   const [micEnabled, setMicEnabled] = useState(true);
 
   const handleToggleMic = () => {
-    console.log(localStream.getAudioTracks())
     localStream.getAudioTracks()[0].enabled = !micEnabled;
     setMicEnabled(!micEnabled);
   };

@@ -24,7 +24,7 @@ const RoomButtons = () => {
 
   return (
     <MainContainer>
-      {audioOnly && (
+      {!audioOnly && (
         <ScreenShareButton dispatch={dispatch} localStream={localStream} />
       )}
       <MicButton localStream={localStream} />

@@ -1,11 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { IconButton } from "@mui/material";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import { setScreenSharingStream } from "../../../store/actions/roomActions";
 import { useSelector } from "react-redux";
 import * as webRTCHandler from "../../../realtimeCommunication/webRTCHandler";
-import store from "../../../store/store";
 
 const ScreenShareButton = ({ dispatch, localStream }) => {
   const room = useSelector((state) => state.room);

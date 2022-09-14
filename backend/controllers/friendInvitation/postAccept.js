@@ -1,6 +1,7 @@
 const FriendInvitation = require("../../models/friendInvitation");
 const friendsUpdate = require("../../socketHandlers/updates/friends");
 const User = require("../../models/user");
+const roomUpdates = require("../../socketHandlers/updates/rooms");
 
 const postAccept = async (req, res) => {
   try {
@@ -28,10 +29,11 @@ const postAccept = async (req, res) => {
     await FriendInvitation.findByIdAndDelete(id);
 
     // update real time friends list to both users
-    friendsUpdate.updateFriends(userId);
-    friendsUpdate.updateFriends(recieverId);
+    friendsUpdate.updateFriends(senderId.toString());
+    friendsUpdate.updateFriends(recieverId.toString());
     // update socket real time of friend Invitation if online
-    friendsUpdate.updateFriendsPendingInvitation(userId);
+    friendsUpdate.updateFriendsPendingInvitation(recieverId.toString());
+
     return res.status(200).send("Friend invite accepted");
   } catch (error) {
     console.log(error);

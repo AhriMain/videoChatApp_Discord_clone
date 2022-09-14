@@ -12,12 +12,15 @@ const BasicMenu = () => {
   const audioOnly = useSelector((state) => state.room.audioOnly);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+
   const handleMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
   const handleAudioOnlyChnage = () => {
     dispatch(setAudiOnly(!audioOnly));
   };

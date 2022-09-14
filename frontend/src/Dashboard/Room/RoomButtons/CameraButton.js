@@ -8,7 +8,6 @@ const CameraButton = ({ localStream }) => {
 
   const handleToggleCamera = () => {
     setCameraEnabled(!cameraEnabled);
-    console.log(localStream.getVideoTracks() )
     localStream.getVideoTracks()[0].enabled = !cameraEnabled;
   };
 
