@@ -11,14 +11,15 @@ const verifyToken = (req, res, next) => {
     token = token.replace(/^Bearer\s+/, "");
     jwt.verify(token, config.TOKEN_KEY, (err, decoded) => {
       if (err) {
-        return res.send("token expired or invalid token");
+        return res
+          .status(401)
+          .json({ error: true, msg: "token expired or invalid token" });
       }
       req.user = decoded;
       next();
     });
   } catch (error) {
-    console.log(error);
-    res.send("error");
+    return res.status(401).json({ error: true, msg: "Something went wrong" });
   }
 };
 

@@ -59,11 +59,13 @@ export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
     // internet details
     stream: localStream,
   }); //this is an object
-  console.log(peers);
+
+  peers[connUserSocketId].on("error", (err) => console.log("error", err));
   // here we listen to data which we wuld like to share with other users
   // here we will get our sdp data and ice candidates
   // this listener will run when we get this peers sdp and ice
   peers[connUserSocketId].on("signal", (data) => {
+    console.log(data);
     const signalData = {
       signal: data,
       connUserSocketId: connUserSocketId,
@@ -73,6 +75,8 @@ export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
     // TODO
     // socketConnection.signalePeerData(signalData)
   });
+  console.log(peers);
+
   peers[connUserSocketId].on("stream", (remoteStream) => {
     // TODO
     // add new remoteStream to reduxStore
@@ -97,7 +101,7 @@ const addNewRemoteStream = (remoteStream) => {
 
 export const closeAllCOnnections = () => {
   // converting object to array
-  console.log(Object.entries(peers))
+  console.log(Object.entries(peers));
   Object.entries(peers).forEach((mappedObject) => {
     console.log("mapped", mappedObject);
     const connUserSocketId = mappedObject[0];
@@ -123,21 +127,22 @@ export const handleParticipantLeftRoom = (data) => {
 };
 
 export const switchOutgoingTracks = (stream) => {
-  for (let socket_id in peers) {
-    for (let index in peers[socket_id].streams[0].getTracks()) {
-      for (let index2 in stream.getTracks()) {
-        if (
-          peers[socket_id].streams[0].getTracks()[index].kind ===
-          stream.getTracks()[index2].kind
-        ) {
-          peers[socket_id].replaceTrack(
-            peers[socket_id].streams[0].getTracks()[index],
-            stream.getTracks()[index2],
-            peers[socket_id].streams[0]
-          );
-          break;
-        }
-      }
-    }
-  }
+  console.log(stream.getTracks());
+  // for (let socket_id in peers) {
+  //   for (let index in peers[socket_id].streams[0].getTracks()) {
+  //     for (let index2 in stream.getTracks()) {
+  //       if (
+  //         peers[socket_id].streams[0].getTracks()[index].kind ===
+  //         stream.getTracks()[index2].kind
+  //       ) {
+  //         peers[socket_id].replaceTrack(
+  //           peers[socket_id].streams[0].getTracks()[index],
+  //           stream.getTracks()[index2],
+  //           peers[socket_id].streams[0]
+  //         );
+  //         break;
+  //       }
+  //     }
+  //   }
+  // }
 };

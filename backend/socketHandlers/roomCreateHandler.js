@@ -6,7 +6,7 @@ const roomCreateHandler = (socket) => {
   const socketId = socket.id;
   const userId = socket.user.userId;
   const roomDetails = serverStore.addNewActiveRoom(userId, socketId);
-
+  console.log(roomDetails);
   socket.emit("room-create", {
     roomDetails,
   });
