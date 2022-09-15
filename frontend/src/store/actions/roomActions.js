@@ -66,6 +66,7 @@ export const setScreenSharingStream = (stream) => {
   };
 };
 
+
 export const setIsUserJoinedOnlyWithAudio = (onlyWithAudio) => {
   return {
     type: roomActions.SET_IS_USER_JOINED_WITH_ONLY_AUDIO,
