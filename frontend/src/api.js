@@ -4,8 +4,9 @@ import { openAlertMessage } from "./store/actions/alertActions";
 import store from "./store/store";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:500/api",
-  timeout: 1000,
+  baseURL: "http://discordclone12.herokuapp.com/api",
+
+  timeout: 5000,
 });
 
 // axios middleware adds token to every request in authorization

@@ -13,7 +13,9 @@ let socket = null;
 
 export const connectWithSocketServer = (userDetails) => {
   const jwtToken = userDetails.token;
-  socket = io("http://localhost:5000", { auth: { token: jwtToken } });
+  socket = io("http://discordclone12.herokuapp.com", {
+    auth: { token: jwtToken },
+  });
   socket.on("connect", () => {});
 
   socket.on("friend-invitations", (data) => {
