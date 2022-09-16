@@ -6,7 +6,7 @@ Live demo - https://discordclone-client.vercel.app .
 A MERN Stack Application built from Scratch which connects to WebRTC and SocketIO to provide group call functionality(video and audio Streaming) and one-to-one messaging in Realtime.
 
 Functionality
-1. Login / Registration (Authentication with JWT Token)
+1. Login / Registration (Authentication with JWT Token).If JWT Token Expires or is not availabe user is redirected to login page.
 2. Friends Invitation System Realtime chat functionality (SocketIO and MongoDB)
 3. Creating Video Group Call Rooms (WebRTC thanks to simple-peer)
 4. Built complete Backend with Endpoints to retrieve online users, online friends,active rooms.
