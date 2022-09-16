@@ -9,9 +9,16 @@ import {
 import * as socketConnection from "./socketConnection";
 import * as webRTCHandler from "./webRTCHandler";
 import { setScreenSharingStream } from "../store/actions/roomActions";
+import { openAlertMessage } from "../store/actions/alertActions";
 
 // when a user creates new room
 export const createNewRoom = () => {
+  const isUserInRoom = store.getState().room?.isUserInRoom;
+  if (isUserInRoom)
+    return openAlertMessage(
+      store.dispatch,
+      "Already in room cannot make more rooms"
+    );
   const successCallbackFunc = () => {
     store.dispatch(setOpenRoom(true, true));
     socketConnection.createNewRoom();

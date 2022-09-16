@@ -39,8 +39,7 @@ export const getLocalStreamPreview = (onlyAudio = false, callbackFunc) => {
       callbackFunc();
     })
     .catch((err) => {
-      err.msg = "cannot access localstream";
-      openAlertMessage(store.dispatch, err.msg);
+      openAlertMessage(store.dispatch, err.message);
       console.error("cannot access localstream");
     });
 };

@@ -31,7 +31,7 @@ export const register = async (dispatch, userDetails, navigate) => {
   const response = await api.register(userDetails);
   if (response.error) {
     //   show error meessage in alert
-    dispatch(openAlertMessage(response?.exception?.response?.data));
+    openAlertMessage(store.dispatch, response?.exception?.response?.data);
   } else {
     const { userDetails } = response?.data; //checks if response is undefined or not
     localStorage.setItem("user", JSON.stringify(userDetails));

@@ -13,7 +13,7 @@ let socket = null;
 
 export const connectWithSocketServer = (userDetails) => {
   const jwtToken = userDetails.token;
-  socket = io("http://localhost:5002", { auth: { token: jwtToken } });
+  socket = io("http://localhost:5000", { auth: { token: jwtToken } });
   socket.on("connect", () => {
     console.log("successfully connected to server");
     console.log(socket.id);
@@ -41,7 +41,7 @@ export const connectWithSocketServer = (userDetails) => {
     roomHandler.newRoomCreated(data);
   });
   socket.on("active-rooms", (data) => {
-    console.log(data)
+    console.log(data);
     roomHandler.updateActiveRooms(data);
   });
   socket.on("conn-prepare", (data) => {
