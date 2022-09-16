@@ -1,6 +1,7 @@
 VideoChat Application [Discord Clone] MongoDB, Express, React, Node with WebRTC and SocketIO for realtime communication possibility.
 
 About Project:
+Live demo - https://discordclone-client.vercel.app
 A MERN Stack Application built from Scratch which connects to WebRTC and SocketIO to provide group call functionality(video and audio Streaming) and one-to-one messaging in Realtime.
 
 Functionality
