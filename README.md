@@ -17,10 +17,11 @@ Features
 1. Login and Registration Form with complete form validation
 2. All users connected to server will be stored in server to show online users for realtime updates using socketIO
 3. users have the functionality to send friend invite to other users by entering their email id
-4. users have the ability to accept and reject friend Invites and data Updates in Real-time
+4. users have the ability to accept and reject friend Invites and data Updates in Real-time.
 5. Users have ability to send messages to friends in realtime
 6. Online/Offline friends data updates in real-time
 7. users can create/join rooms to stream video and audio or only audio of no webcam thanks to webRTC
 8. users can also stream their screen and has functionality to change between webcam video or screen sharing
 9. users can mute themself while streaming.
 10. All the above actions can be performed only if Authenticated via JWT Token based Authentication.
+11.Test Driven Development using jest.
