@@ -14,7 +14,6 @@ export const setUserDetails = (userDetails) => {
 // login action
 export const login = async (dispatch, userDetails, navigate) => {
   const response = await api.login(userDetails);
-  console.log(response);
   if (response.error) {
     //   show error meessage in alert
     openAlertMessage(store.dispatch, response?.exception?.response?.data);

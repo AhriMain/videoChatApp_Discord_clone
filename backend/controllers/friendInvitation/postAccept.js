@@ -36,7 +36,6 @@ const postAccept = async (req, res) => {
 
     return res.status(200).send("Friend invite accepted");
   } catch (error) {
-    console.log(error);
     return res.status(500).send("something wend wrong");
   }
 };

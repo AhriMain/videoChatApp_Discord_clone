@@ -34,7 +34,6 @@ export const getLocalStreamPreview = (onlyAudio = false, callbackFunc) => {
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then((stream) => {
-      console.log(stream);
       store.dispatch(setLocalStream(stream));
       callbackFunc();
     })
@@ -48,11 +47,6 @@ let peers = {};
 
 export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
   const localStream = store.getState().room.localStream;
-  if (isInitiator) {
-    console.log("preparing new peer connection as initiator");
-  } else {
-    console.log("not initiator");
-  }
   peers[connUserSocketId] = new Peer({
     initiator: isInitiator, //if this field has value true then it
     //will automaticaaly connect to other users or peers
@@ -61,12 +55,13 @@ export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
     stream: localStream,
   }); //this is an object
 
-  peers[connUserSocketId].on("error", (err) => console.log("error", err));
+  peers[connUserSocketId].on("error", (err) => {
+    openAlertMessage(store.dispatch, "Error Establishing RTCConnection");
+  });
   // here we listen to data which we wuld like to share with other users
   // here we will get our sdp data and ice candidates
   // this listener will run when we get this peers sdp and ice
   peers[connUserSocketId].on("signal", (data) => {
-    console.log(data);
     const signalData = {
       signal: data,
       connUserSocketId: connUserSocketId,
@@ -76,12 +71,11 @@ export const prepareNewPeerConnection = (connUserSocketId, isInitiator) => {
     // TODO
     // socketConnection.signalePeerData(signalData)
   });
-  console.log(peers);
 
   peers[connUserSocketId].on("stream", (remoteStream) => {
     // TODO
     // add new remoteStream to reduxStore
-    console.log("data coming stream remote enabled");
+
     remoteStream.connUserSocketId = connUserSocketId;
     addNewRemoteStream(remoteStream);
   });
@@ -102,9 +96,8 @@ const addNewRemoteStream = (remoteStream) => {
 
 export const closeAllCOnnections = () => {
   // converting object to array
-  console.log(Object.entries(peers));
+
   Object.entries(peers).forEach((mappedObject) => {
-    console.log("mapped", mappedObject);
     const connUserSocketId = mappedObject[0];
     if (peers[connUserSocketId]) {
       // below function is provided by simple peer

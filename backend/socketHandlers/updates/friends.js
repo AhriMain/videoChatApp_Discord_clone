@@ -20,9 +20,7 @@ const updateFriendsPendingInvitation = async (userId) => {
         pendingInvitations: pendingInvitations ? pendingInvitations : [],
       });
     });
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 const updateFriends = async (userId) => {
@@ -39,7 +37,7 @@ const updateFriends = async (userId) => {
       const friendsList = user.friends.map((f) => {
         return { id: f._id, mail: f.mail, username: f.username };
       });
-      console.log(friendsList);
+
       // find active connections of specific id(online suers)
       const receiverList = serverStore.getActiveConnections(userId);
       // get io instance
@@ -51,9 +49,7 @@ const updateFriends = async (userId) => {
         });
       });
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 module.exports = { updateFriendsPendingInvitation, updateFriends };

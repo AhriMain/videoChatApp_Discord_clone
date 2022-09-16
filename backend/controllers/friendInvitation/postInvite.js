@@ -3,7 +3,6 @@ const Invitation = require("../../models/friendInvitation");
 const friendsUpdates = require("../../socketHandlers/updates/friends");
 
 const postInvite = async (req, res) => {
-  console.log("first");
   const { targetMailAddress } = req.body;
 
   // this we get in jwt token
@@ -17,7 +16,6 @@ const postInvite = async (req, res) => {
   const targetUser = await User.findOne({
     mail: targetMailAddress.toLowerCase(),
   });
-  console.log(targetUser);
 
   // check if the sender user exists
   if (!targetUser) {

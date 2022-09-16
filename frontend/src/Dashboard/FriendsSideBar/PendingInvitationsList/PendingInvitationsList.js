@@ -16,7 +16,6 @@ const PendingInvitationsList = () => {
   const friendsInvitations = useSelector(
     (state) => state.friends?.pendingFriendsInvitations
   );
-  console.log(friendsInvitations);
   return (
     <MainContainer>
       {friendsInvitations.map((invitation) => (

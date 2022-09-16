@@ -11,7 +11,8 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         showAlertMessage: true,
-        alertMessageContent: action.content,
+        alertMessageContent:
+          action.content ?? "server error.Try after some time",
       };
     }
     case alertActions.CLOSE_ALERT_MESSAGE: {

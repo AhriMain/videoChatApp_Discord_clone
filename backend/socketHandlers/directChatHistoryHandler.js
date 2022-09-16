@@ -13,9 +13,7 @@ const directChatHistoryHandler = async (socket, data) => {
     if (conversation) {
       chatUpdates.updateChatHistory(conversation._id.toString(), socket.id);
     }
-  } catch (error) {
-    console.log(error);
-  }
+  } catch (error) {}
 };
 
 module.exports = directChatHistoryHandler;

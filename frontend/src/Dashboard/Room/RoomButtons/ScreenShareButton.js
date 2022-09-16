@@ -5,6 +5,8 @@ import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import { setScreenSharingStream } from "../../../store/actions/roomActions";
 import { useSelector } from "react-redux";
 import * as webRTCHandler from "../../../realtimeCommunication/webRTCHandler";
+import { openAlertMessage } from "../../../store/actions/alertActions";
+import store from "../../../store/store";
 
 const ScreenShareButton = ({ dispatch, localStream }) => {
   const room = useSelector((state) => state.room);
@@ -16,7 +18,8 @@ const ScreenShareButton = ({ dispatch, localStream }) => {
       try {
         stream = await navigator.mediaDevices.getDisplayMedia(constraints);
       } catch (error) {
-        console.log(
+        openAlertMessage(
+          store.dispatch,
           "error occured when trying to get an access to screen share stream"
         );
       }

@@ -14,10 +14,7 @@ let socket = null;
 export const connectWithSocketServer = (userDetails) => {
   const jwtToken = userDetails.token;
   socket = io("http://localhost:5000", { auth: { token: jwtToken } });
-  socket.on("connect", () => {
-    console.log("successfully connected to server");
-    console.log(socket.id);
-  });
+  socket.on("connect", () => {});
 
   socket.on("friend-invitations", (data) => {
     const { pendingInvitations } = data;
@@ -33,41 +30,35 @@ export const connectWithSocketServer = (userDetails) => {
     store.dispatch(setOnlineUsers(onlineUsers));
   });
   socket.on("direct-chat-history", (data) => {
-    console.log(data, "chethan");
     updateDirectChatHistoryIfActive(data);
   });
   socket.on("room-create", (data) => {
-    console.log("room created", data);
     roomHandler.newRoomCreated(data);
   });
   socket.on("active-rooms", (data) => {
-    console.log(data);
     roomHandler.updateActiveRooms(data);
   });
   socket.on("conn-prepare", (data) => {
     const { connUserSocketId } = data;
-    console.log("jett", data);
+
     webRTCHandler.prepareNewPeerConnection(connUserSocketId, false);
     socket.emit("conn-init", { connUserSocketId: connUserSocketId });
   });
 
   socket.on("conn-init", (data) => {
     const { connUserSocketId } = data;
-    console.log("jett");
+
     webRTCHandler.prepareNewPeerConnection(connUserSocketId, true);
   });
   socket.on("conn-signal", (data) => {
-    console.warn("signal came");
     webRTCHandler.handleSignalingData(data);
   });
   socket.on("room-participant-left", (data) => {
-    console.log("suer left");
     webRTCHandler.handleParticipantLeftRoom(data);
   });
 };
 
 export const sendDirectMessage = (data) => {
-  console.log(data);
   socket.emit("direct-message", data);
 };
 

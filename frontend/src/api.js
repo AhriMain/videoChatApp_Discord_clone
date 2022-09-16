@@ -1,8 +1,10 @@
 import axios from "axios";
 import { logout } from "./shared/utils/auth";
+import { openAlertMessage } from "./store/actions/alertActions";
+import store from "./store/store";
 
 const apiClient = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: "http://localhost:500/api",
   timeout: 1000,
 });
 
@@ -16,7 +18,9 @@ apiClient.interceptors.request.use(
     }
     return config;
   },
-  (err) => Promise.reject(err)
+  (err) => {
+    return Promise.reject(err);
+  }
 );
 
 // Api calls
@@ -25,7 +29,6 @@ export const login = async (data) => {
   try {
     return await apiClient.post("/auth/login", data);
   } catch (exception) {
-    console.log(exception);
     return { error: true, exception };
   }
 };
@@ -81,6 +84,9 @@ export const rejectFriendInvitation = async (data) => {
 const checkResponseCode = (exception) => {
   const responseCode = exception?.response?.status;
   if (responseCode) {
-    (responseCode === 401 || responseCode === 403) && logout();
+    if (responseCode === 401 || responseCode === 403) {
+      openAlertMessage(store.dispatch, "Login Again");
+      logout();
+    }
   }
 };

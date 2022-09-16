@@ -8,7 +8,6 @@ const roomLeaveHandler = (socket, data) => {
     serverStore.leaveActiveRoom(roomId, socket.id);
     const updatedActiveRoom = serverStore.getActiveRoom(roomId);
 
-    console.log("shaata", updatedActiveRoom);
     if (updatedActiveRoom) {
       updatedActiveRoom.participants.forEach((participant) => {
         socket

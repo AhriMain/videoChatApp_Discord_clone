@@ -34,11 +34,8 @@ mongoose
   .then(() => {
     server.listen(PORT, () => console.log(`listening at ${PORT}`));
   })
-  .catch((err) => {
-    console.log(err);
-  });
+  .catch((err) => {});
 
 app.get("/", auth, (req, res) => {
-  console.log("in route", req.user);
   res.send("hello");
 });
