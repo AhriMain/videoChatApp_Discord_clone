@@ -35,11 +35,11 @@ const AddFriendDialog = ({ isDialogOpen, closeDialogHandler }) => {
     <div>
       <Dialog open={isDialogOpen} onClose={handleCloseDialog}>
         <DialogTitle>
-          <Typography>Invite a Friend</Typography>
+          <Typography component={"span"}>Invite a Friend</Typography>
         </DialogTitle>
         <DialogContent>
           <DialogContentText>
-            <Typography>Enter email-address</Typography>
+            <Typography component={"span"}>Enter email-address</Typography>
           </DialogContentText>
           <InputWithLabel
             label="Mail mate"

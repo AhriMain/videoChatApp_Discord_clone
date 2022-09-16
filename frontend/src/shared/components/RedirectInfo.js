@@ -18,6 +18,7 @@ const RedirectInfo = ({
       sx={{ color: "#72767d" }}
       style={additionalStyle ? additionalStyle : {}}
       variant="subtitle2"
+      component={"span"}
     >
       {text}{" "}
       <RedirectText onClick={redirectHandler}>{redirectText}</RedirectText>

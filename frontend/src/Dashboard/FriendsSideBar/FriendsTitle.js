@@ -10,6 +10,7 @@ const FriendsTitle = ({ title }) => {
         fontSize: "14px",
         marginTop: "10px",
       }}
+      component={"span"}
     >
       {title}
     </Typography>
