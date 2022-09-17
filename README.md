@@ -6,6 +6,8 @@
 # Project Title
 VideoChat Application [Discord Clone] 
 
+If you get any Error which the application loads for the first time please wait for 5seconds and refresh the page. Application should be good to go.
+
 
 
 
