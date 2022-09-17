@@ -27,18 +27,26 @@ Live demo - https://discordclone-client.vercel.app .
 ## Screenshots
 
 Register Page
+
 ![App Screenshot](./registerPage.png)
 Login Page
+
 ![App Screenshot](./loginPage.png)
+
 Send Friend Invitation Via email-address
+
 ![App Screenshot](./sendFriendInvite.png)
 
 Hamburger Menu
+
 ![App Screenshot](./hamburgerMenu.png)
 
 Video Call 2 People
+
 ![App Screenshot](./videoStream.png)
+
 Messaging Real-Time
+
 ![App Screenshot](./message.png)
 
 
