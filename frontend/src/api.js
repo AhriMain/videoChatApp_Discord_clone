@@ -4,7 +4,7 @@ import { openAlertMessage } from "./store/actions/alertActions";
 import store from "./store/store";
 
 const apiClient = axios.create({
-  baseURL: "http://discordclone12.herokuapp.com/api",
+  baseURL: "https://discordclone-bychethan.herokuapp.com/api",
 
   timeout: 5000,
 });
